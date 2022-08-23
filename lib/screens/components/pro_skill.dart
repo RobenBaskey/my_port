@@ -75,7 +75,7 @@ class ProSkill extends StatelessWidget {
                         padding: EdgeInsets.all(0),
                         barRadius:
                             Radius.circular(SizeConfig.screenWidth * 0.01),
-                        progressColor: Colors.greenAccent,
+                        progressColor: CustomColor.mainColor.withOpacity(0.5),
                       ),
                       SizedBox(
                         height: SizeConfig.screenHeight * 0.05,
@@ -150,7 +150,7 @@ class ProSkill extends StatelessWidget {
                         padding: EdgeInsets.all(0),
                         barRadius:
                             Radius.circular(SizeConfig.screenWidth * 0.01),
-                        progressColor: Colors.greenAccent,
+                        progressColor: CustomColor.mainColor.withOpacity(0.5),
                       ),
                       SizedBox(
                         height: SizeConfig.screenHeight * 0.05,

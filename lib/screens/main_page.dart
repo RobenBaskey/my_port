@@ -1,12 +1,17 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/components/custom_color.dart';
+import 'package:my_portfolio/screens/components/contact_me.dart';
 import 'package:my_portfolio/screens/components/home_page.dart';
 import 'package:my_portfolio/screens/components/my_protfolio.dart';
 import 'package:my_portfolio/screens/components/my_resume.dart';
+import 'package:my_portfolio/screens/components/pricing.dart';
+import 'package:my_portfolio/screens/components/testimonial.dart';
 import 'package:my_portfolio/screens/components/what_do.dart';
 import 'package:my_portfolio/screens/widget/menu_button.dart';
 import 'package:my_portfolio/size_config.dart';
+
+import 'components/my_blog.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -112,6 +117,10 @@ class MainPage extends StatelessWidget {
                 WhatDo(),
                 MyPortfolio(),
                 MyResume(),
+                Testimonial(),
+                MyPricing(),
+                MyBlog(),
+                ContactMe(),
               ]),
         ),
       ),
