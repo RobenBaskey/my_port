@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_portfolio/screens/controller/main_controller.dart';
+import 'package:my_portfolio/screens/widget/what_do_card.dart';
 import 'package:my_portfolio/size_config.dart';
 
 import '../../components/custom_color.dart';
 
 class WhatDo extends StatelessWidget {
-  const WhatDo({super.key});
+  WhatDo({super.key});
+  final MainController _mainController = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
@@ -36,30 +41,27 @@ class WhatDo extends StatelessWidget {
         SizedBox(
           height: SizeConfig.screenHeight * 0.05,
         ),
-        GridView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 6,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: SizeConfig.screenWidth * 0.02,
-                crossAxisSpacing: SizeConfig.screenWidth * 0.02,
-                crossAxisCount: 3),
-            itemBuilder: ((context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Neumorphic(
-                  style: NeumorphicStyle(
-                      shape: NeumorphicShape.concave,
-                      boxShape: NeumorphicBoxShape.roundRect(
-                          BorderRadius.circular(
-                              SizeConfig.screenWidth * 0.007)),
-                      lightSource: LightSource.topLeft,
-                      shadowLightColor: Colors.white,
-                      shadowDarkColor: Colors.black.withOpacity(0.2),
-                      color: Colors.white60),
-                ),
-              );
-            })),
+        AnimationLimiter(
+            child: GridView.count(
+          crossAxisCount: 3,
+          childAspectRatio: 5 / 4,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          children: List.generate(_mainController.whList.length, (index) {
+            return AnimationConfiguration.staggeredGrid(
+              position: index,
+              duration: const Duration(milliseconds: 375),
+              columnCount: 3,
+              child: ScaleAnimation(
+                child: FadeInAnimation(
+                    child: WhatDoCard(
+                  whModel: _mainController.whList[index],
+                  index: index,
+                )),
+              ),
+            );
+          }),
+        )),
         SizedBox(
           height: SizeConfig.screenHeight * 0.1,
         ),

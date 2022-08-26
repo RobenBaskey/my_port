@@ -1,11 +1,15 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_portfolio/screens/controller/main_controller.dart';
 import 'package:my_portfolio/screens/widget/social_btn.dart';
 import 'package:my_portfolio/size_config.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+  final MainController _mainController = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +64,35 @@ class HomePage extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Text(
-                              "a",
+                              "a ",
                               style: GoogleFonts.rubik(
                                 fontWeight: FontWeight.bold,
+                                color: Color(0xFFFB003F),
                                 fontSize: SizeConfig.screenWidth * 0.04,
                               ),
                             ),
-                            Text(" Developer.",
-                                style: GoogleFonts.rubik(
-                                  color: Color(0xFFFB003F),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: SizeConfig.screenWidth * 0.04,
-                                ))
+                            AnimatedTextKit(
+                              animatedTexts: [
+                                ColorizeAnimatedText('Developer.',
+                                    colors: _mainController.colorizeColors,
+                                    textStyle: GoogleFonts.rubik(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: SizeConfig.screenWidth * 0.04,
+                                    )),
+                                ColorizeAnimatedText(
+                                  'Professional Coder.',
+                                  textStyle: GoogleFonts.rubik(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: SizeConfig.screenWidth * 0.04,
+                                  ),
+                                  colors: _mainController.colorizeColors,
+                                ),
+                              ],
+                              isRepeatingAnimation: true,
+                              onTap: () {
+                                print("Tap Event");
+                              },
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -81,8 +102,8 @@ class HomePage extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Text(
-                                "I use animation as a third dimension by which to simplify experiences and kuiding thro each and every"
-                                " interaction. I’m not adding motion just to spruce things up, but doing it in ways that.",
+                                "Energetic and curiosity-driven flutter developer with 1+ years of experience writing top-quality clean code for high-paced businesses."
+                                "",
                                 style: GoogleFonts.montserrat(
                                     height: 2,
                                     color: Colors.black.withOpacity(0.7),
@@ -113,15 +134,27 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      SocailButton(onTap: () {}),
+                                      SocailButton(
+                                        onTap: () {},
+                                        image: "asset/icons/facebook.png",
+                                        index: 1,
+                                      ),
                                       SizedBox(
                                         width: SizeConfig.screenWidth * 0.02,
                                       ),
-                                      SocailButton(onTap: () {}),
+                                      SocailButton(
+                                        onTap: () {},
+                                        image: "asset/icons/instagram.png",
+                                        index: 2,
+                                      ),
                                       SizedBox(
                                         width: SizeConfig.screenWidth * 0.02,
                                       ),
-                                      SocailButton(onTap: () {}),
+                                      SocailButton(
+                                        onTap: () {},
+                                        image: "asset/icons/linkedin.png",
+                                        index: 3,
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -142,15 +175,27 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      SocailButton(onTap: () {}),
+                                      SocailButton(
+                                        onTap: () {},
+                                        image: "asset/icons/api.png",
+                                        index: 4,
+                                      ),
                                       SizedBox(
                                         width: SizeConfig.screenWidth * 0.02,
                                       ),
-                                      SocailButton(onTap: () {}),
+                                      SocailButton(
+                                        onTap: () {},
+                                        image: "asset/icons/server.png",
+                                        index: 5,
+                                      ),
                                       SizedBox(
                                         width: SizeConfig.screenWidth * 0.02,
                                       ),
-                                      SocailButton(onTap: () {}),
+                                      SocailButton(
+                                        onTap: () {},
+                                        image: "asset/icons/figma.png",
+                                        index: 6,
+                                      ),
                                     ],
                                   ),
                                 ],

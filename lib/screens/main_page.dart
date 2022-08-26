@@ -113,6 +113,7 @@ class MainPage extends StatelessWidget {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                MyPortfolio(),
                 HomePage(),
                 WhatDo(),
                 MyPortfolio(),
