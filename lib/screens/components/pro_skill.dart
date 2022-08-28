@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_portfolio/screens/controller/main_controller.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../components/custom_color.dart';
 import '../../size_config.dart';
 
 class ProSkill extends StatelessWidget {
-  const ProSkill({super.key});
+  ProSkill({super.key});
+  final MainController _mainController = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +46,14 @@ class ProSkill extends StatelessWidget {
             ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: 3,
+                itemCount: _mainController.proDesignList.length,
                 itemBuilder: ((context, index) {
+                  var result = _mainController.proDesignList[index];
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "PHOTOSHOT",
+                        result.title,
                         style: TextStyle(
                             fontFamily: "Nunito",
                             color: Colors.black,
@@ -59,7 +63,7 @@ class ProSkill extends StatelessWidget {
                       Align(
                           alignment: Alignment.centerRight,
                           child: Text(
-                            "90%",
+                            "${result.percentage * 100}%",
                             style: GoogleFonts.adventPro(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
@@ -71,7 +75,7 @@ class ProSkill extends StatelessWidget {
                         animation: true,
                         lineHeight: SizeConfig.screenHeight * 0.01,
                         animationDuration: 2000,
-                        percent: 0.9,
+                        percent: result.percentage,
                         padding: EdgeInsets.all(0),
                         barRadius:
                             Radius.circular(SizeConfig.screenWidth * 0.01),
@@ -118,13 +122,14 @@ class ProSkill extends StatelessWidget {
             ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: 3,
+                itemCount: _mainController.proDevelopmentList.length,
                 itemBuilder: ((context, index) {
+                  var result = _mainController.proDevelopmentList[index];
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "PHOTOSHOT",
+                        result.title,
                         style: TextStyle(
                             fontFamily: "Nunito",
                             color: Colors.black,
@@ -134,7 +139,7 @@ class ProSkill extends StatelessWidget {
                       Align(
                           alignment: Alignment.centerRight,
                           child: Text(
-                            "90%",
+                            "${result.percentage * 100}%",
                             style: GoogleFonts.adventPro(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
@@ -146,7 +151,7 @@ class ProSkill extends StatelessWidget {
                         animation: true,
                         lineHeight: SizeConfig.screenHeight * 0.01,
                         animationDuration: 2000,
-                        percent: 0.9,
+                        percent: result.percentage,
                         padding: EdgeInsets.all(0),
                         barRadius:
                             Radius.circular(SizeConfig.screenWidth * 0.01),

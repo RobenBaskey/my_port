@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
@@ -50,6 +51,8 @@ class PortCard extends StatelessWidget {
                                     AnimatedPositioned(
                                         duration: Duration(milliseconds: 1000),
                                         curve: Curves.easeInOut,
+                                        left: 0,
+                                        right: 0,
                                         height: _mainController
                                                         .portHoverIndex.value ==
                                                     index &&
@@ -101,16 +104,54 @@ class PortCard extends StatelessWidget {
                         SizedBox(
                           height: SizeConfig.screenHeight * 0.01,
                         ),
-                        Text(
-                          result.title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontFamily: "Nunito",
-                              color: Colors.black,
-                              fontSize: SizeConfig.screenWidth * 0.012,
-                              fontWeight: FontWeight.w600),
-                        ),
+                        _mainController.portHoverIndex.value == index &&
+                                _mainController.isPortHovered.value
+                            ? Wrap(children: [
+                                AnimatedTextKit(
+                                  animatedTexts: [
+                                    FadeAnimatedText(
+                                      result.title,
+                                      textStyle: TextStyle(
+                                          fontFamily: "Nunito",
+                                          color: CustomColor.mainColor,
+                                          fontSize:
+                                              SizeConfig.screenWidth * 0.012,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    FadeAnimatedText(
+                                      result.title,
+                                      textStyle: TextStyle(
+                                          fontFamily: "Nunito",
+                                          color: CustomColor.mainColor,
+                                          fontSize:
+                                              SizeConfig.screenWidth * 0.012,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ],
+                                  pause: Duration(milliseconds: 500),
+                                  isRepeatingAnimation: false,
+                                  onTap: () {
+                                    print("Tap Event");
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Icon(
+                                  Icons.arrow_circle_right,
+                                  color: CustomColor.mainColor.withOpacity(0.6),
+                                )
+                              ])
+                            : Text(
+                                result.title,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontFamily: "Nunito",
+                                    color: Colors.black,
+                                    fontSize: SizeConfig.screenWidth * 0.012,
+                                    fontWeight: FontWeight.w600),
+                              ),
                       ]),
                 ),
               ))),

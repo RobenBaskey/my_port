@@ -61,10 +61,12 @@ class ContactMe extends StatelessWidget {
                           width: double.infinity,
                           height: SizeConfig.screenHeight * 0.37,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                SizeConfig.screenWidth * 0.007),
-                            color: Colors.grey,
-                          ),
+                              borderRadius: BorderRadius.circular(
+                                  SizeConfig.screenWidth * 0.007),
+                              color: Colors.grey,
+                              image: DecorationImage(
+                                  image: AssetImage("asset/images/shake.png"),
+                                  fit: BoxFit.cover)),
                         ),
                         SizedBox(
                           height: SizeConfig.screenHeight * 0.04,
@@ -114,18 +116,11 @@ class ContactMe extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            NeumorphicButton(
-                                onPressed: () async {},
-                                style: NeumorphicStyle(
-                                    shadowDarkColor:
-                                        Colors.grey.withOpacity(0.8),
-                                    shape: NeumorphicShape.concave,
-                                    color: Colors.white,
-                                    boxShape: NeumorphicBoxShape.beveled(
-                                        BorderRadius.circular(
-                                            SizeConfig.screenWidth * 0.002))),
-                                padding: const EdgeInsets.all(12.0),
-                                child: Icon(Icons.facebook)),
+                            SocailButton(
+                              onTap: () {},
+                              image: "asset/icons/facebook.png",
+                              index: 5,
+                            ),
                             SizedBox(
                               width: SizeConfig.screenWidth * 0.02,
                             ),
